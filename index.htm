@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>JSGrid jQuery plugin</title>
+    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" />
+    
+    <meta name="description" content="jQuery widget that helps to display read-only tabular data." />
+    <meta name="keywords" content="grid,sorting,paging,scroll,DHTML,JavaScript,jQuery" />
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+    
+    <script type="text/javascript" language="javascript" src="js-grid.min.js"></script>
+    <!--<script type="text/javascript" language="javascript" src="scripts/event-buffer.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/table-scroll.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid-constants.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid-pager.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid-column.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid-header.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/grid-body.js"></script>-->
+
+    <script type="text/javascript" language="javascript" src="demo-scripts/utils.js"></script>
+    <script type="text/javascript" language="javascript" src="demo-scripts/demo-grid-script.js"></script>
+    <script type="text/javascript" language="javascript" src="demo-scripts/data.js"></script>
+
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="styles/cupertino/jquery-ui-1.9.2.css" rel="stylesheet" id="themeLink" type="text/css" />
+    <link href="styles/cupertino/grid-style.css" rel="stylesheet" id="gridStyle" type="text/css" />
+    <link href="styles/cupertino/scroll-style.css" rel="stylesheet" id="scrollStyle" type="text/css" />
+    
+        
+</head>
+<body>
+    <div class="section">
+        <h1><a href="https://github.com/vol-bob/table-scroll">Fork on GitHub</a></h1>
+    </div>
+
+    <div class="section">
+        <h1>JS Grid</h1>
+        <code>jQuery.grid</code> plugin helps to display read-only tabular data.
+    </div>
+    
+    <div class="section">
+        <h1>Features</h1>
+        <ul>
+            <li>Virtual scrolling.</li>
+            <li>Data paging.</li>
+            <li>Multi-row headers.</li>
+            <li>Custom rendering available for cells and header.</li>
+            <li>Lazy loading.</li>
+            <li>Three themes available - Flick, Cupertino, Vader.</li>
+            <li>Themable scroll.</li>
+        </ul>
+    </div>
+    
+    <div class="section" style="margin-top: 0px;">
+        <table>
+            <tr>
+                <td>Theme:
+                    <select id="themeSelector">
+                        <option label="Flick" value="flick">Flick</option>
+                        <option label="Cupertino" value="cupertino" selected="selected">Cupertino</option>
+                        <option label="Vader" value="vader">Vader</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td id="gridContainer"></td>
+            </tr>
+            <tr>
+                <td>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="accordion">
+
+                        <h3>Options</h3>
+                        <div style="height:35px;">
+                            <label style="padding-right:10px; padding-top:6px; float:left">Show Paging:</label>
+                            <div id="pagerSettings">
+                                <input type="radio" id="cbPagerNone" name="pagingOptions" /><label for="cbPagerNone">None (Virtual Scrolling)</label>
+                                <input type="radio" id="cbPagerBottom" name="pagingOptions" checked="checked" value="PAGER_POSITION_BOTTOM" /><label for="cbPagerBottom">Bottom</label>
+                                <input type="radio" id="cbPagerTop" name="pagingOptions" value="PAGER_POSITION_TOP" /><label for="cbPagerTop">Top</label>
+                                <input type="radio" id="cbPagerTopAndBottom" name="pagingOptions" value="PAGER_POSITION_TOP_AND_BOTTOM" /><label for="cbPagerTopAndBottom">Top and Bottom</label>
+                            </div>
+                        </div>
+
+                        <h3>Events</h3>
+                        <div style="height:170px;">
+                            <div>Events log:</div>
+                            <div style="float:left">
+                                <textarea style="width:550px; height:130px" id="logTextarea"></textarea>
+                            </div>
+                            <div style="float:left; margin-left:20px">
+                                <input type="button" id="clearLogButton" value="Clear" />
+                                <div style="float:left; margin-top:10px">
+                                    <div id="eventsToLog" style="vertical-align:middle">
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" id="gridbodycellcustomdraw" type="checkbox" />
+                                            <span style="vertical-align: middle">bodyCellCustomDraw</span>
+                                        </label>
+                                        <br />
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" id="gridcolumnheadercustomdraw" type="checkbox" />
+                                            <span style="vertical-align: middle">columnHeaderCustomDraw</span>
+                                        </label>
+                                        <br />
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" checked="checked" id="gridgetdataframe" type="checkbox" />
+                                            <span style="vertical-align: middle">getDataFrame</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <h3>Code</h3>
+                        <div style="height:400px;">
+                            <pre class="prettyprint lang-js">
+$('#gridContainer').grid({
+    numberOfElementsInDataSource: data.length,
+    alternatingRowEnabled: true,
+    numberOfRowsInScrollableArea: 15,
+    columns:
+        [
+            { caption: "Author", name: "Author", field: "", width: 200, subColumns:
+                [
+                    { caption: "First Name", name: "FirstName", field: "FirstName", width: 100 },
+                    { caption: "Last Name", name: "LastName", field: "SecondName", width: 100 }
+                ]
+            },
+            { caption: "Book", name: "Book", field: "Book", width: 750 },
+            { caption: "Price", name: "Price", field: "Price", width: 80 },
+            { caption: "In Stock", name: "InStock", field: "InStock", width: 80 }
+        ],
+    columnHeaderCustomDraw: ColumnHeaderCustomDraw,
+    bodyCellCustomDraw: CellCustomDraw,
+    getDataFrame: UpdateGridData,
+    pagerSettings: {
+        showPager: true, 
+        pageSize: 25, 
+        position: gridConstants.PAGER_POSITION_BOTTOM
+    }
+});
+                            </pre>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" language="javascript">
+
+        createGrid();
+
+        $('#gridContainer').bind('gridbodycellcustomdraw', logEvent);
+        $('#gridContainer').bind('gridcolumnheadercustomdraw', logEvent);
+        $('#gridContainer').bind('gridgetdataframe', logEvent);
+
+    </script>
+</body>
+</html>

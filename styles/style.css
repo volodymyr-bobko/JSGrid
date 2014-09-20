@@ -1,0 +1,45 @@
+﻿body {
+    font: normal .80em 'trebuchet ms', arial, sans-serif;
+    background: #EEEFF5;
+    color: #00156E;
+    margin: 20px;
+}
+
+code {
+    font-size: 17px;
+}
+
+h1>code {
+    font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00156E;
+    font-weight: normal;
+}
+
+ul>li {
+    list-style-type: none;
+    background: url(../images/bullet.png) no-repeat;
+    margin: 0 0 0 0;
+    padding: 0 0 4px 25px;
+    line-height: 1.5em;
+}
+
+.checkbox-style
+{
+    width: 13px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.label-style
+{
+    line-height: 18px;
+}
+
+.section {
+    margin-top: 40px;
+    margin-left: 30px;
+}

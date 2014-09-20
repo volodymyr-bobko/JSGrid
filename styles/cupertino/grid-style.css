@@ -1,0 +1,150 @@
+﻿.grid-main-table
+{
+    border-collapse:collapse;
+    font-family: arial, sans-serif;
+    font-size: 12px;
+}
+
+.grid-header-cell
+{
+    border: 1px solid #5D8CC9;
+    background: repeat-x #C3D8F1 url(images/grid-header-bg.png);
+    color: #00156E;
+    height:20px;
+}
+
+.grid-header-caption
+{
+    cursor: pointer;
+}
+
+.grid-body-cell
+{
+    border: 1px solid #D0D7E5;
+    background-color: white;
+    height:22px;
+    padding-left:3px;
+}
+
+.grid-body-cell-left
+{
+    border: 1px solid #D0D7E5;
+    background-color: white;
+    height:22px;
+    padding-left:3px;
+    border-left-color: #5D8CC9;
+}
+
+.grid-body-cell-alt
+{
+    border: 1px solid #D0D7E5;
+    background-color: white;
+    height:22px;
+    padding-left:3px;
+}
+
+.grid-body-cell-alt-left
+{
+    border: 1px solid #D0D7E5;
+    background-color: white;
+    height:22px;
+    padding-left:3px;
+    border-left-color: #5D8CC9;
+}
+
+.grid-scroll-container
+{
+    border: 1px solid #D0D7E5;
+    background-color: #EEF6FC;
+    border-right-color: #5D8CC9;
+}
+
+.grid-icon-triangle-asc
+{
+    width: 7px;
+    height: 4px;
+    background-position: -9px -1px;
+    margin-right: 5px;
+    background-image: url(images/grid-sprite.png);
+}
+
+.grid-icon-triangle-desc
+{
+    width: 7px;
+    height: 4px;
+    background-position: -1px -1px;
+    margin-right: 5px;
+    background-image: url(images/grid-sprite.png);
+}
+
+.grid-pager-container
+{
+    border: 1px solid #5D8CC9;
+    background-color: #C3D8F1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:10px;
+}
+
+.grid-button-next-page
+{
+    cursor: pointer;
+    background-image: url(images/grid-sprite.png);
+    background-position: -43px 0px;
+    width: 19px;
+    height:19px;
+}
+
+.grid-button-next-page-disabled
+{
+    cursor: default;
+    background-image: url(images/grid-sprite.png);
+    width: 19px;
+    height:19px;
+    background-position: -43px -25px;
+}
+
+.grid-button-prev-page
+{
+    cursor: pointer;
+    background-image: url(images/grid-sprite.png);
+    background-position: -19px 0px;
+    width: 19px;
+    height:19px;
+}
+
+.grid-button-prev-page-disabled
+{
+    cursor: default;
+    background-image: url(images/grid-sprite.png);
+    width: 19px;
+    height:19px;
+    background-position: -19px -25px;
+}
+
+.grid-page-index
+{
+    color: #00156E;
+    cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    border: 1px solid #C3D8F1;
+}
+
+.grid-page-indexes-delimeter
+{
+    color: #00156E;
+    cursor: default;
+}
+
+.grid-page-index-current
+{
+    color: #00156E;
+    border: 1px solid #c08930;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    background:#f7e7a6;
+    cursor:default;
+}
