@@ -9,6 +9,12 @@ code {
     font-size: 17px;
 }
 
+.css {
+    color: #B44600;
+    font-size:14px;
+    font-family:'Droid Sans Mono', Menlo, Monaco, 'Courier New', Courier, monospace; 
+}
+
 h1>code {
     font-size: inherit;
 }
@@ -24,6 +30,11 @@ ul>li {
     margin: 0 0 0 0;
     padding: 0 0 4px 25px;
     line-height: 1.5em;
+}
+
+.no-list>li{
+    background: none;
+    padding-left:0px;
 }
 
 .checkbox-style
