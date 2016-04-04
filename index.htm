@@ -1,0 +1,364 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>JSGrid jQuery plugin</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" />
+
+    <meta name="description" content="jQuery widget that helps to display read-only tabular data." />
+    <meta name="keywords" content="grid,sorting,paging,scroll,DHTML,JavaScript,jQuery" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+
+    <script type="text/javascript" language="javascript" src="js-grid.min.js"></script>
+   
+
+    <script type="text/javascript" language="javascript" src="demo-scripts/utils.js"></script>
+    <script type="text/javascript" language="javascript" src="demo-scripts/demo-grid-script.js"></script>
+    <script type="text/javascript" language="javascript" src="demo-scripts/data.js"></script>
+
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="styles/cupertino/jquery-ui-1.9.2.css" rel="stylesheet" id="themeLink" type="text/css" />
+    <link href="styles/cupertino/grid-style.css" rel="stylesheet" id="gridStyle" type="text/css" />
+    <link href="styles/cupertino/scroll-style.css" rel="stylesheet" id="scrollStyle" type="text/css" />
+
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=558703187523667&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="section">
+        <h1><a href="https://github.com/vol-bob/JSGrid">Project on GitHub</a></h1>
+    </div>
+
+    <div class="section">
+        <h1>JS Grid</h1>
+        <code>jQuery.grid</code> plugin helps to display read-only tabular data.
+        <br/><br />
+        <div class="fb-like" data-href="http://javascriptgrid.com/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
+
+    <div class="section">
+        <h1>Features</h1>
+        <ul>
+            <li>Virtual scrolling.</li>
+            <li>Data paging.</li>
+            <li>Multi-row headers.</li>
+            <li>Custom rendering available for cells and header.</li>
+            <li>Lazy loading.</li>
+            <li>Three themes available - Flick, Cupertino, Vader.</li>
+            <li>Themable scroll.</li>
+        </ul>
+    </div>
+
+    <div class="section" style="margin-top: 0px;">
+        <table>
+            <tr>
+                <td>
+                    Theme:
+                    <select id="themeSelector">
+                        <option label="Flick" value="flick">Flick</option>
+                        <option label="Cupertino" value="cupertino" selected="selected">Cupertino</option>
+                        <option label="Vader" value="vader">Vader</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td id="gridContainer"></td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="accordion">
+
+                        <h3>Options</h3>
+                        <div style="height:35px;">
+                            <label style="padding-right:10px; padding-top:6px; float:left">Show Paging:</label>
+                            <div id="pagerSettings">
+                                <input type="radio" id="cbPagerNone" name="pagingOptions" /><label for="cbPagerNone">None (Virtual Scrolling)</label>
+                                <input type="radio" id="cbPagerBottom" name="pagingOptions" checked="checked" value="PAGER_POSITION_BOTTOM" /><label for="cbPagerBottom">Bottom</label>
+                                <input type="radio" id="cbPagerTop" name="pagingOptions" value="PAGER_POSITION_TOP" /><label for="cbPagerTop">Top</label>
+                                <input type="radio" id="cbPagerTopAndBottom" name="pagingOptions" value="PAGER_POSITION_TOP_AND_BOTTOM" /><label for="cbPagerTopAndBottom">Top and Bottom</label>
+                            </div>
+                        </div>
+
+                        <h3>Events</h3>
+                        <div style="height:170px;">
+                            <div>Events log:</div>
+                            <div style="float:left">
+                                <textarea style="width:550px; height:130px" id="logTextarea"></textarea>
+                            </div>
+                            <div style="float:left; margin-left:20px">
+                                <input type="button" id="clearLogButton" value="Clear" />
+                                <div style="float:left; margin-top:10px">
+                                    <div id="eventsToLog" style="vertical-align:middle">
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" id="gridbodycellcustomdraw" type="checkbox" />
+                                            <span style="vertical-align: middle">bodyCellCustomDraw</span>
+                                        </label>
+                                        <br />
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" id="gridcolumnheadercustomdraw" type="checkbox" />
+                                            <span style="vertical-align: middle">columnHeaderCustomDraw</span>
+                                        </label>
+                                        <br />
+                                        <label style="display: inline-block">
+                                            <input style="vertical-align: middle" checked="checked" id="gridgetdataframe" type="checkbox" />
+                                            <span style="vertical-align: middle">getDataFrame</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h3>API</h3>
+                        <div>
+                            <h3>Options</h3>
+                            <ul>
+                                <li>numberOfElementsInDataSource - number of elements in data source.</li>
+                                <li>alternatingRowEnabled - Default: false.
+                                    <ul class="no-list">
+                                        <li>true - odd and even rows will have different styles.</li>
+                                        <li>false - all rows will have the same style.</li>
+                                    </ul>
+                                </li>
+                                <li>numberOfRowsInScrollableArea - number of visible rows in grid. In other words it's grid height in rows.</li>
+                                <li>columns - array of column definitions. 
+                                <br />Every element of this array has following fields:
+                                    <ul>
+                                        <li>caption - column caption.</li>
+                                        <li>name - unique column name.</li>
+                                        <li>filed - field in data source for this column. For band columns (columns with sub-columns) this value should be empty.</li>
+                                        <li>subColumns - array of of column definitions that will be displayed as sub-columns of this column.</li>
+                                    </ul>
+                                </li>
+                                <li>pagerSettings - object with following fields
+                                    <ul>
+                                        <li>showPager - Default: true.
+                                            <ul class="no-list">
+                                                <li>true - show pager.</li>
+                                                <li>false - virtual scrolling mode</li>
+                                            </ul>
+                                        </li>
+                                        <li>pageSize - Default: 15. Number of rows in one page.</li>
+                                        <li>position - Default: 'PAGER_POSITION_BOTTOM'.
+                                            <ul class="no-list">
+                                                <li>'PAGER_POSITION_TOP'</li>
+                                                <li>'PAGER_POSITION_BOTTOM'</li>
+                                                <li>'PAGER_POSITION_TOP_AND_BOTTOM'</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                            <h3>Events</h3>
+                            <ul>
+                                <li>columnHeaderCustomDraw - triggers on every column header rendering. Subscribe to this event if you need custom appearance for column headers.
+                                    Event handler arguments:
+                                    <ul>
+                                        <li>event – standard jQuery event object.</li>
+                                        <li>data – event data. Object with following fields:
+                                            <ul>
+                                                <li>columnName - column name.</li>
+                                                <li>caption – column caption.</li>
+                                                <li>cell – root html element of this column header. You can modify content of this element to change header appearance.</li>
+                                                <li>columnObj – object that represents this column in grid.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <strong>Example of event handler:</strong>
+                                    <ul class="no-list">
+                                        <li>
+                                            <pre class="prettyprint lang-js">
+//change header background for column 'Author'
+function onColumnHeaderCustomDraw(event, data){
+    if (data.columnName == 'Author') {
+    data.cell.css('background', 'red');
+    }
+}</pre>
+                                            <pre class="prettyprint lang-js">
+//add checkbox to column header 'Author'
+function onColumnHeaderCustomDraw(event, data){
+    if (data.columnName == 'Author') {
+        // find caption element
+        var captionElement = $('.' + gridConstants.CSS_HEADER_CELL_CAPTION, data.cell);
+        // insert checkbox right after column caption
+        $('&lt;br /&gt;&lt;input type=&quot;checkbox&quot; /&gt;').insertAfter(captionElement);
+        var checkbox = $('input[type=checkbox]', data.cell);
+        // restore state from column object
+        checkbox.attr('checked', data.columnObj.customCheckboxChecked);
+        checkbox.click(function (e) {
+            // click on checkbox will be treated by grid as click on column header, that in turn will cause sorting
+            // to prevent this we need to stop click event propagation
+            e.stopPropagation();
+        });
+        checkbox.change(function () {
+            // grid can recreate column header element in future, that's why we need to keep checkbox state
+            // save state in column object
+            data.columnObj.customCheckboxChecked = $(this).is(':checked');
+        });
+    }
+}</pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>bodyCellCustomDraw - triggers on every grid cell rendering. Subscribe to this event if you need custom appearance for cells.
+                                    Event handler arguments:
+                                    <ul>
+                                        <li>event – standard jQuery event object.</li>
+                                        <li>
+                                            data – event data. Object with following fields:
+                                            <ul>
+                                                <li>cell - root html element of this cell. You can modify content of this element to change cell appearance.</li>
+                                                <li>field – data field.</li>
+                                                <li>value – cell value.</li>
+                                                <li>dataRow – data object associated with current row.</li>
+                                                <li>dataSourceIndex - index of data object associated with current row</li>
+                                                <li>isEmpty - true if this cell is empty, otherwise false. Cell can be empty, when for example you have 3 elements in data source and 10 rows page size, then you'll get 7 empty rows.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <strong>Example of event handler:</strong>
+                                    <ul class="no-list">
+                                        <li>
+                                            <pre class="prettyprint lang-js">
+//highlight author names with red color, for all books with price higher than $30
+function onBodyCellCustomDraw(event, data){
+    if (data.field == "FirstName" || data.field == "SecondName") {
+        if (data.dataRow["Price"] > 30) {
+            data.cell.css('background', 'red');
+        } else {
+            data.cell.css('background', 'white');
+        }
+    }
+}</pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>getDataFrame - triggers when new portion of data is needed to render grid. For example when user switch between pages, or move scroll in virtual scrolling mode. This is the right place to request new portion of data from your server.
+                                    Event handler arguments:
+                                    <ul>
+                                        <li>event – standard jQuery event object.</li>
+                                        <li>
+                                            data – event data. Object with following fields:
+                                            <ul>
+                                                <li>orderByFields - list of column names used in sorting. Usually this array contains only one column, but when user sort grid by band column (column that has several sub-columns) then this array contains all data columns of this band column.</li>
+                                                <li>direction – order direction. Possible values: 'ASC' and 'DESC'.</li>
+                                                <li>startFromRecord – position of requested data frame in sorted data source.</li>
+                                                <li>numberOfRecordsToShow – number of records in requested data frame.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    Typically, within handler of this event you should do the following:
+                                    <ol>
+                                        <li>get your data</li>
+                                        <li>order data by fields specified in <code>orderByFields</code> and with direction specified in <code>direction</code>.</li>
+                                        <li>take <code>numberOfRecordsToShow</code> starting from record <code>startFromRecord</code>.</li>
+                                        <li>pass resulting array of data rows to setDataFrame method.</li>
+                                    </ol>
+                                    In real life steps 1,2, and 3 should be executed on server side. But if you have all your data on the client, you can perform all these steps on client side and avoid callbacks.
+                                    <strong>Example of event handler:</strong>
+                                    <ul class="no-list">
+                                        <li>
+                                            <pre class="prettyprint lang-js">
+//load data from server
+function onGetDataFrame(event, data) {
+    $.ajax({
+            type: "POST",
+            url: "http://www.myserver.com/data",
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8'
+        })
+        .done(function(res) {
+            $('#gridContainer').data('jsg-grid').setDataFrame(res);
+        });
+}</pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <h3>Methods</h3>
+                            <ul>
+                                <li>setDataFrame(dataFrame) - call this method only when you recieved resulting data after <code>getDataFrame</code> event. See <code>getDataFrame</code> event for more details.</li>
+                                <li>refreshData() - reloads data from the data source.</li>
+                            </ul>
+                        </div>
+
+                        <h3>Code</h3>
+                        <div>
+                            <pre class="prettyprint lang-js">
+$('#gridContainer').grid({
+    numberOfElementsInDataSource: data.length,
+    alternatingRowEnabled: true,
+    numberOfRowsInScrollableArea: 15,
+    columns:
+        [
+            { caption: "Author", name: "Author", field: "", width: 200, subColumns:
+                [
+                    { caption: "First Name", name: "FirstName", field: "FirstName", width: 100 },
+                    { caption: "Last Name", name: "LastName", field: "SecondName", width: 100 }
+                ]
+            },
+            { caption: "Book", name: "Book", field: "Book", width: 750 },
+            { caption: "Price", name: "Price", field: "Price", width: 80 },
+            { caption: "In Stock", name: "InStock", field: "InStock", width: 80 }
+        ],
+    columnHeaderCustomDraw: ColumnHeaderCustomDraw,
+    bodyCellCustomDraw: CellCustomDraw,
+    getDataFrame: UpdateGridData,
+    pagerSettings: {
+        showPager: true, 
+        pageSize: 25, 
+        position: gridConstants.PAGER_POSITION_BOTTOM
+    }
+});
+                            </pre>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" language="javascript">
+
+        createGrid();
+
+        $('#gridContainer').bind('gridbodycellcustomdraw', logEvent);
+        $('#gridContainer').bind('gridcolumnheadercustomdraw', logEvent);
+        $('#gridContainer').bind('gridgetdataframe', logEvent);
+
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37950410-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿.scrollUpImg
+{
+    width: 17px;
+    height: 17px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -1px -1px;
+	background-repeat: no-repeat;
+}
+
+.scrollUpImg:hover
+{
+    background-position: -19px -1px;
+}
+
+.scrollUpImgPressed
+{
+    width: 17px;
+    height: 17px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -37px -1px;
+	background-repeat: no-repeat;
+}
+
+.scrollDownImg
+{
+    width: 17px;
+    height: 17px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -1px -40px;
+	background-repeat: no-repeat;
+}
+
+.scrollDownImg:hover
+{
+    background-position: -19px -40px;
+}
+
+.scrollDownImgPressed
+{
+    width: 17px;
+    height: 17px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -37px -40px;
+	background-repeat: no-repeat;
+}
+
+.scrollUpImgDis
+{
+}
+
+.scrollDownImgDis 
+{
+}
+
+.scrollBgElement
+{
+    background-image: url("images/scroll-bg.png");
+    width:17px;
+    background-position: -1px;
+    cursor: default;
+}
+
+.movable
+{
+    background-image: url("images/scroll-middle.png");
+    background-position: -1px;
+}
+
+.movableHover
+{
+    background-image: url("images/scroll-middle.png");
+    background-position: -19px;
+}
+
+.movablePressed
+{
+    background-image: url("images/scroll-middle.png");
+    background-position: -37px;
+}
+
+.movableTop
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -1px -21px;
+	background-repeat: no-repeat;
+}
+
+.movableTopHover
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -19px -21px;
+	background-repeat: no-repeat;
+}
+
+.movableTopPressed
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -37px -21px;
+	background-repeat: no-repeat;
+}
+
+.movableBottom 
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -1px -35px;
+	background-repeat: no-repeat;
+}
+
+.movableBottomHover
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -19px -35px;
+	background-repeat: no-repeat;
+}
+
+.movableBottomPressed
+{
+    width: 17px;
+    height: 2px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -37px -35px;
+	background-repeat: no-repeat;
+}
+
+.movableGrip 
+{
+    width: 17px;
+    height: 12px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -1px -23px;
+	background-repeat: no-repeat;
+}
+
+.movableGripHover 
+{
+    width: 17px;
+    height: 12px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -19px -23px;
+	background-repeat: no-repeat;
+}
+
+.movableGripPressed 
+{
+    width: 17px;
+    height: 12px;
+    background-image: url("images/scroll-buttons-sprite.png");
+    background-position: -37px -23px;
+	background-repeat: no-repeat;
+}

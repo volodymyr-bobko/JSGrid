@@ -1,0 +1,154 @@
+﻿.grid-main-table
+{
+    border-collapse:collapse;
+    font-family:arial, sans-serif;
+    font-size: 12px;
+}
+
+.grid-header-cell
+{
+    border: 1px solid #4f4f4f;
+    color: white;
+    background: repeat-x #191919 url(images/grid-header-bg.png);
+    height:20px;
+}
+
+.grid-header-caption
+{
+    cursor: pointer;
+}
+
+.grid-body-cell
+{
+    border-bottom: 1px solid #4F4F4F;
+    background-color: #4F4F4F;
+    height:22px;
+    padding-left:3px;
+    color: #D7D7D7;
+}
+
+.grid-body-cell-left
+{
+    border-bottom: 1px solid #4F4F4F;
+    background-color: #4F4F4F;
+    height:22px;
+    padding-left:3px;
+    color: #D7D7D7;
+    border-left: 1px solid #4f4f4f;
+}
+
+.grid-body-cell-alt
+{
+    border-bottom: 1px solid #4F4F4F;
+    background-color: #494949;
+    height:22px;
+    padding-left:3px;
+    color: #D7D7D7;
+}
+
+.grid-body-cell-alt-left
+{
+    border-bottom: 1px solid #4F4F4F;
+    background-color: #494949;
+    height:22px;
+    padding-left:3px;
+    color: #D7D7D7;
+    border-left: 1px solid #4f4f4f;
+}
+
+.grid-scroll-container
+{
+    border: 1px solid black;
+    background-color: #4F4F4F;
+    border-right-color: #4f4f4f;
+}
+
+.grid-icon-triangle-asc
+{
+    width: 7px;
+    height: 4px;
+    background-position: -9px -1px;
+    margin-right: 5px;
+    background-image: url(images/grid-sprite.png);
+}
+
+.grid-icon-triangle-desc
+{
+    width: 7px;
+    height: 4px;
+    background-position: -1px -1px;
+    margin-right: 5px;
+    background-image: url(images/grid-sprite.png);
+}
+
+.grid-pager-container
+{
+    border: 1px solid #4f4f4f;
+    background-color: #191919;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:10px;
+}
+
+.grid-button-next-page
+{
+    cursor: pointer;
+    background-image: url(images/grid-sprite.png);
+    background-position: -43px 0px;
+    width: 19px;
+    height:19px;
+}
+
+.grid-button-next-page-disabled
+{
+    cursor: default;
+    background-image: url(images/grid-sprite.png);
+    width: 19px;
+    height:19px;
+    background-position: -43px -25px;
+}
+
+.grid-button-prev-page
+{
+    cursor: pointer;
+    background-image: url(images/grid-sprite.png);
+    background-position: -19px 0px;
+    width: 19px;
+    height:19px;
+}
+
+.grid-button-prev-page-disabled
+{
+    cursor: default;
+    background-image: url(images/grid-sprite.png);
+    width: 19px;
+    height:19px;
+    background-position: -19px -25px;
+}
+
+.grid-page-index
+{
+    color: white;
+    cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    border: 1px solid #191919;
+}
+
+.grid-page-indexes-delimeter
+{
+    color: white;
+    cursor: default;
+}
+
+.grid-page-index-current
+{
+    border: 1px solid #cccccc;
+    color: #333333;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    background-color: #898989;
+    cursor:default;
+}
