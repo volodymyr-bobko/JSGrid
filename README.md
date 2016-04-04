@@ -1,7 +1,7 @@
 JSGrid
 ======
 
-Try it here - http://javascriptgrid.com/
+Try it here - http://volodymyr-bobko.github.io/JSGrid/
 
 This jQuery widget that helps to display read-only tabular data.
 
